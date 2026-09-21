@@ -1,0 +1,51 @@
+# =========================
+# Java / Maven
+# =========================
+Backend/target/
+Backend/.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# Environment / Secrets
+# =========================
+Backend/.env
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iml
+*.iws
+*.ipr
+
+Backend/.idea/
+
+# =========================
+# Spring Tool Suite / Eclipse
+# =========================
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# =========================
+# NetBeans
+# =========================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Local / Dataset files
+# =========================
+/data/
+/gamesense_data/
