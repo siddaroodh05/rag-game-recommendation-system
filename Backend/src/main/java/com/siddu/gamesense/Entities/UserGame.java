@@ -5,7 +5,13 @@ import lombok.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "user_game_and_reviews")
+@Table(name = "user_game_and_reviews",
+        indexes = {
+                @Index(
+                        name = "idx_user_game_user_timestamp",
+                        columnList = "user_id, timestamp"
+                )
+        })
 @Getter
 @Setter
 @Builder
