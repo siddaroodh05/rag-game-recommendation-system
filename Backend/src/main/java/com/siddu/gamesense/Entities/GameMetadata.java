@@ -1,6 +1,7 @@
 package com.siddu.gamesense.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Array;
@@ -22,6 +23,7 @@ public class GameMetadata {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id", nullable = false, unique = true)
+    @JsonIgnore
     private Game game;
 
     @Column(nullable = false, columnDefinition = "TEXT")
