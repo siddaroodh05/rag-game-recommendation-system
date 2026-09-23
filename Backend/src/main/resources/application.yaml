@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: GameSense
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/GameSense_Database}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 2
+      max-lifetime: 300000
+      idle-timeout: 120000
+      connection-timeout: 30000
+      keepalive-time: 60000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  ai:
+    openai:
+      api-key: ${GROQ_API_KEY}
+      base-url: https://api.groq.com/openai/v1
+      chat:
+        options:
+          model: openai/gpt-oss-20b
+          temperature: 0.2
+
+    ollama:
+      base-url: http://localhost:11434
+      embedding:
+        model: nomic-embed-text
+
+retrieval:
+  embedding:
+    dimension: 768
+
+data:
+  path: ../data/
