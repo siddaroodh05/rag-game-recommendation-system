@@ -48,4 +48,4 @@ Backend/.idea/
 # Local / Dataset files
 # =========================
 /data/
-/gamesense_data/
+Backend/gamesense_data/

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserGameRepository extends JpaRepository<UserGame, Long> {
@@ -22,9 +23,7 @@ public interface UserGameRepository extends JpaRepository<UserGame, Long> {
             ug.reviewText,
             g.parentAsin,
             gm.title,
-            gm.features,
-            gm.categories,
-            gm.description
+            gm.features
         )
         FROM UserGame ug
         JOIN ug.game g
@@ -43,9 +42,7 @@ public interface UserGameRepository extends JpaRepository<UserGame, Long> {
             ug.reviewText,
             g.parentAsin,
             gm.title,
-            gm.features,
-            gm.categories,
-            gm.description
+            gm.features
         )
         FROM UserGame ug
         JOIN ug.game g
@@ -57,4 +54,27 @@ public interface UserGameRepository extends JpaRepository<UserGame, Long> {
             @Param("userId") String userId,
             Pageable pageable
     );
+
+    @Query("""
+    SELECT COUNT(ug)
+    FROM UserGame ug
+    WHERE ug.user.userId = :userId
+      AND ug.rating >= 3
+""")
+    long countPositiveReviews(@Param("userId") String userId);
+
+
+    @Query("""
+    SELECT MAX(ug.rating)
+    FROM UserGame ug
+    WHERE ug.user.userId = :userId
+    """)
+    Double findTopRatingByUserId(@Param("userId") String userId);
+
+    @Query("""
+    SELECT MIN(ug.rating)
+    FROM UserGame ug
+    WHERE ug.user.userId = :userId
+    """)
+    Double findLowestRatingByUserId(@Param("userId") String userId);
 }

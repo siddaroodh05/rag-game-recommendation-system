@@ -39,7 +39,9 @@ public class Csvdtomapper {
             return new EvalutionInputdto(
                     record.get("user_id"),
                     record.get("parent_asin"),
-                    Double.parseDouble(record.get("rating"))
+                    Double.parseDouble(record.get("rating")),
+                    Long.parseLong(record.get("timestamp"))
+
             );
 
     }

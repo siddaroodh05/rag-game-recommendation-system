@@ -31,7 +31,7 @@ spring:
       base-url: https://api.groq.com/openai/v1
       chat:
         options:
-          model: openai/gpt-oss-20b
+          model: qwen/qwen3.8-27b
           temperature: 0.2
 
     ollama:
@@ -42,6 +42,8 @@ spring:
 retrieval:
   embedding:
     dimension: 768
+    tok-k: 5
 
 data:
   path: ../data/
+
